@@ -14,7 +14,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import FocusTrap from "focus-trap-react";
 import Link from "next/link";
 import { ChevronDown, X, GraduationCap, Home, Menu } from "lucide-react";
-import { setDemoDeploymentMode, clearDemoDeploymentMode } from "../lib/deployment-mode";
 import PrivacyModal from "./shared/PrivacyModal";
 import TermsModal from "./shared/TermsModal";
 
@@ -327,7 +326,7 @@ export default function MainNav({
               </div>
               {showAdmin && (
                 <Link
-                  href="/admin"
+                  href="https://pulse.earlylight.health/admin"
                   className={`transition-colors ${isAdminActive ? 'text-white font-medium' : 'text-text-muted hover:text-white'}`}
                 >
                   Admin
@@ -349,7 +348,7 @@ export default function MainNav({
               )}
               {showAdmin && (
                 <Link
-                  href="/admin"
+                  href="https://pulse.earlylight.health/admin"
                   className="hidden md:block px-5 py-2 bg-gradient-to-r from-amber-500 to-orange-600 rounded-full font-semibold text-sm hover:shadow-lg hover:shadow-amber-500/30 transition-all text-white"
                 >
                   Admin Panel
@@ -475,7 +474,7 @@ export default function MainNav({
                 {showAdmin && (
                   <div className="pt-3 border-t border-white/10">
                     <Link
-                      href="/admin"
+                      href="https://pulse.earlylight.health/admin"
                       onClick={closeMobileMenu}
                       className={`flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-[15px] ${isAdminActive ? 'text-white font-medium' : 'text-text-muted hover:text-white'}`}
                     >
@@ -531,9 +530,8 @@ export default function MainNav({
                 {/* Family Demo */}
                 <button
                   onClick={() => {
-                    setDemoDeploymentMode('family_only');
                     setDemoModalOpen(false);
-                    window.location.href = '/auth';
+                    window.location.href = 'https://pulse.earlylight.health/parent?demo_user=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa';
                   }}
                   className="group flex flex-col items-start gap-3 p-6 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 hover:border-purple-400/60 rounded-xl transition-all text-left"
                 >
@@ -549,9 +547,8 @@ export default function MainNav({
                 {/* Education Demo */}
                 <button
                   onClick={() => {
-                    clearDemoDeploymentMode();
                     setDemoModalOpen(false);
-                    window.location.href = '/auth';
+                    window.location.href = 'https://pulse.earlylight.health/auth';
                   }}
                   className="group flex flex-col items-start gap-3 p-6 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 hover:border-cyan-400/60 rounded-xl transition-all text-left"
                 >

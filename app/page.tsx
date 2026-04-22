@@ -1051,9 +1051,9 @@ export default function PlatformsLandingPage() {
               <p className="text-sm text-gray-500 mt-2 leading-relaxed">
                 Daily check-ins for parents and children. AI-powered insight. Earlier support. Free for every family.
               </p>
-              <Link href="/auth" className="mt-4 text-sm font-medium" style={{ color: '#06B6D4' }}>
+              <a href="https://family.earlylight.health/signup" className="mt-4 text-sm font-medium" style={{ color: '#06B6D4' }}>
                 Get started free →
-              </Link>
+              </a>
             </motion.div>
 
             {/* Card 2 — Pre-School Pulse */}
@@ -1087,9 +1087,9 @@ export default function PlatformsLandingPage() {
               <p className="text-sm text-gray-500 mt-2 leading-relaxed">
                 The complete school wellbeing platform — parents, teachers, counsellors, and SIS data in one view.
               </p>
-              <Link href="/#demo" className="mt-4 text-sm font-medium" style={{ color: '#9333EA' }}>
+              <a href="mailto:info@earlylight.health" className="mt-4 text-sm font-medium" style={{ color: '#9333EA' }}>
                 Request a demo →
-              </Link>
+              </a>
             </motion.div>
 
             {/* Card 4 — Counsellor on Demand */}
@@ -1153,9 +1153,9 @@ export default function PlatformsLandingPage() {
                   <li key={f} className="flex items-center gap-2"><span style={{ color: '#06B6D4' }}>✓</span>{f}</li>
                 ))}
               </ul>
-              <Link href="/auth" className="mt-auto block text-center py-2.5 px-4 rounded-xl font-semibold text-white text-sm" style={{ backgroundColor: '#06B6D4' }}>
+              <a href="https://family.earlylight.health/signup" className="mt-auto block text-center py-2.5 px-4 rounded-xl font-semibold text-white text-sm" style={{ backgroundColor: '#06B6D4' }}>
                 Get started
-              </Link>
+              </a>
             </motion.div>
 
             {/* Card 2 — Family+ (Coming soon) */}
