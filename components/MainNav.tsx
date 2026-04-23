@@ -13,7 +13,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import FocusTrap from "focus-trap-react";
 import Link from "next/link";
-import { ChevronDown, X, GraduationCap, Home, Menu } from "lucide-react";
+import { ChevronDown, X, Menu } from "lucide-react";
 import PrivacyModal from "./shared/PrivacyModal";
 import TermsModal from "./shared/TermsModal";
 
@@ -75,7 +75,6 @@ export default function MainNav({
 
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showPrivacyModal, setShowPrivacyModal] = useState(false);
   const [showTermsModal, setShowTermsModal] = useState(false);
@@ -233,12 +232,12 @@ export default function MainNav({
                 )}
               </div>
 
-              <button
-                onClick={() => setDemoModalOpen(true)}
+              <a
+                href="https://pulse.earlylight.health/demo"
                 className={`transition-colors ${isDemoActive ? 'text-white font-medium' : 'text-text-muted hover:text-white'}`}
               >
                 Demo
-              </button>
+              </a>
 
               {/* About dropdown */}
               <div className="relative" data-nav-dropdown>
@@ -339,12 +338,12 @@ export default function MainNav({
               {rightSlot}
               {/* Desktop-only CTAs */}
               {variant === "landing" && (
-                <button
-                  onClick={() => setDemoModalOpen(true)}
+                <a
+                  href="https://pulse.earlylight.health/demo"
                   className="hidden md:block px-6 py-2 bg-gradient-to-r from-brand-cyan to-brand-purple rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all text-white"
                 >
                   Try Demo
-                </button>
+                </a>
               )}
               {showAdmin && (
                 <Link
@@ -426,12 +425,13 @@ export default function MainNav({
                 >
                   Mission
                 </button>
-                <button
-                  onClick={() => { setDemoModalOpen(true); closeMobileMenu(); }}
-                  className={`w-full text-left px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-[15px] ${isDemoActive ? 'text-white font-medium' : 'text-text-muted hover:text-white'}`}
+                <a
+                  href="https://pulse.earlylight.health/demo"
+                  onClick={closeMobileMenu}
+                  className={`block w-full px-4 py-3 rounded-xl hover:bg-white/5 transition-colors text-[15px] ${isDemoActive ? 'text-white font-medium' : 'text-text-muted hover:text-white'}`}
                 >
                   Demo
-                </button>
+                </a>
 
                 {/* About — expanded inline */}
                 <div className="pt-3">
@@ -489,77 +489,6 @@ export default function MainNav({
                 <p className="text-xs text-white/30 text-center">
                   © 2026 EarlyLight
                 </p>
-              </div>
-            </motion.div>
-            </FocusTrap>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Demo Selection Modal */}
-      <AnimatePresence>
-        {demoModalOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[70] bg-black/70 backdrop-blur-md flex items-center justify-center p-4"
-            onClick={() => setDemoModalOpen(false)}
-          >
-            <FocusTrap active={demoModalOpen}>
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 25 }}
-              className="bg-navy border border-white/10 rounded-2xl p-8 w-full max-w-lg relative"
-              onClick={(e: React.MouseEvent) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setDemoModalOpen(false)}
-                className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
-                aria-label="Close"
-              >
-                <X className="w-5 h-5 text-white" />
-              </button>
-
-              <h2 className="text-2xl font-bold text-white mb-2">Choose a Demo</h2>
-              <p className="text-gray-400 text-sm mb-6">Select which experience you'd like to explore</p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Family Demo */}
-                <button
-                  onClick={() => {
-                    setDemoModalOpen(false);
-                    window.location.href = 'https://pulse.earlylight.health/parent?demo_user=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa';
-                  }}
-                  className="group flex flex-col items-start gap-3 p-6 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 hover:border-purple-400/60 rounded-xl transition-all text-left"
-                >
-                  <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition-all">
-                    <Home className="w-5 h-5 text-purple-300" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-white mb-1">Family Demo</div>
-                    <div className="text-xs text-gray-400 leading-relaxed">See EarlyLight as a family at home — parent and child check-ins, wellbeing trends, and family support tools</div>
-                  </div>
-                </button>
-
-                {/* Education Demo */}
-                <button
-                  onClick={() => {
-                    setDemoModalOpen(false);
-                    window.location.href = 'https://pulse.earlylight.health/auth';
-                  }}
-                  className="group flex flex-col items-start gap-3 p-6 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 hover:border-cyan-400/60 rounded-xl transition-all text-left"
-                >
-                  <div className="w-10 h-10 rounded-full bg-cyan-500/20 flex items-center justify-center group-hover:bg-cyan-500/30 transition-all">
-                    <GraduationCap className="w-5 h-5 text-cyan-300" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-white mb-1">Education Demo</div>
-                    <div className="text-xs text-gray-400 leading-relaxed">See EarlyLight in a school or university — student check-ins, teacher observations, and counsellor dashboards</div>
-                  </div>
-                </button>
               </div>
             </motion.div>
             </FocusTrap>
